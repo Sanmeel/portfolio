@@ -7,9 +7,6 @@ export const metadata: Metadata = {
   title: "Sanmeel Vijay Lagad | Mechanical & Computational Engineer",
   description:
     "Portfolio and engineering work across robotics, metrology, and mechanics.",
-  icons: {
-    icon: `${basePath}/icon.svg`,
-  },
 };
 
 export default function RootLayout({
@@ -19,6 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href={`${basePath}/icon.svg?v=${Date.now()}`} type="image/svg+xml" />
+      </head>
       <body className="antialiased bg-[#FBFBFA] text-stone-900">
         {children}
       </body>
