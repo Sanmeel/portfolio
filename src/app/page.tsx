@@ -463,9 +463,6 @@ export default function PortfolioPage() {
         <header className="space-y-10">
           <div className="flex flex-col-reverse md:flex-row md:items-center justify-between gap-8">
             <div className="space-y-4 max-w-xl">
-              <span className="text-xs font-mono tracking-widest uppercase text-stone-500 font-semibold">
-                Portfolio & Engineering Work
-              </span>
               <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-stone-950 leading-[1.12]">
                 Sanmeel Vijay Lagad
               </h1>
