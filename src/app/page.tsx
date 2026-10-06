@@ -16,6 +16,15 @@ import {
   X,
 } from "lucide-react";
 
+// Repository base path helper for GitHub Pages
+const basePath = process.env.NODE_ENV === "production" ? "/portfolio" : "";
+
+function getAssetPath(src: string): string {
+  if (!src || src.startsWith("http")) return src;
+  const cleanSrc = src.startsWith("/") ? src : `/${src}`;
+  return `${basePath}${cleanSrc}`;
+}
+
 function LinkedinIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -48,6 +57,7 @@ interface Project {
 }
 
 const SCHOLAR_URL = "https://scholar.google.com/citations?user=2F6xMKcAAAAJ&hl=en";
+const LINKEDIN_URL = "https://www.linkedin.com/in/sanmeel-vijay-lagad-8ba91a191";
 
 const EDUCATION = [
   {
@@ -366,7 +376,7 @@ function ProjectCard({
                         >
                           <div className="relative w-full h-full bg-white">
                             <Image
-                              src={imgSrc}
+                              src={getAssetPath(imgSrc)}
                               alt={`${project.title} - ${rIdx + 1}.${cIdx + 1}`}
                               fill
                               unoptimized
@@ -390,7 +400,7 @@ function ProjectCard({
                   >
                     <div className="relative w-full h-full bg-white">
                       <Image
-                        src={rowItem}
+                        src={getAssetPath(rowItem)}
                         alt={`${project.title} - ${rIdx + 1}`}
                         fill
                         unoptimized
@@ -465,7 +475,7 @@ export default function PortfolioPage() {
 
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <a
-                  href="https://www.linkedin.com/in/sanmeellagad"
+                  href={LINKEDIN_URL}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-stone-300 bg-white hover:bg-stone-50 text-stone-800 text-xs font-medium shadow-xs transition-all active:scale-98"
@@ -502,7 +512,7 @@ export default function PortfolioPage() {
               className="relative rounded-full overflow-hidden border-2 border-stone-300 bg-white shadow-md shrink-0"
             >
               <Image
-                src="/profile.jpg"
+                src={getAssetPath("/profile.jpg")}
                 alt="Sanmeel Vijay Lagad"
                 fill
                 priority
@@ -670,7 +680,7 @@ export default function PortfolioPage() {
               Google Scholar
             </a>
             <a
-              href="https://www.linkedin.com/in/sanmeellagad"
+              href={LINKEDIN_URL}
               target="_blank"
               rel="noreferrer"
               className="hover:text-stone-900 transition-colors"
@@ -710,7 +720,7 @@ export default function PortfolioPage() {
             {/* Modal Image Display */}
             <div className="relative w-full h-[60vh] sm:h-[75vh] bg-white p-4">
               <Image
-                src={activeModalImage.src}
+                src={getAssetPath(activeModalImage.src)}
                 alt={activeModalImage.title}
                 fill
                 unoptimized
